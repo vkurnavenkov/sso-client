@@ -1,0 +1,11 @@
+%h1
+  Hello,
+  = signed_in? ? current_user.first_name : 'Guest'
+  \!
+%h2 Welcome! It's Home page.
+%p.flash
+  = flash[:notice]
+- if signed_in?
+  %p= link_to("Logout!", destroy_user_session_path)
+- else
+  %p= link_to("Log into the system", user_ninthdecimal_omniauth_authorize_path)
